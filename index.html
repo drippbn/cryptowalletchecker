@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Wallet Checker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔍 Crypto Wallet Checker</h1>
+            <p class="subtitle">Check Ethereum wallet balance and recent transactions</p>
+        </header>
+
+        <div class="input-section">
+            <div class="input-group">
+                <input 
+                    type="text" 
+                    id="walletAddress" 
+                    placeholder="Paste your Ethereum wallet address (0x...)" 
+                    class="wallet-input"
+                >
+                <button id="checkBtn" class="check-button">Check Wallet</button>
+            </div>
+            <div id="error" class="error-message"></div>
+        </div>
+
+        <div id="loading" class="loading hidden">
+            <div class="spinner"></div>
+            <p>Loading wallet data...</p>
+        </div>
+
+        <div id="results" class="results hidden">
+            <div class="balance-section">
+                <h2>💰 Wallet Balance</h2>
+                <div class="balance-card">
+                    <div class="balance-item">
+                        <span class="label">Address:</span>
+                        <span id="displayAddress" class="value"></span>
+                    </div>
+                    <div class="balance-item">
+                        <span class="label">ETH Balance:</span>
+                        <span id="ethBalance" class="value large"></span>
+                    </div>
+                    <div class="balance-item">
+                        <span class="label">USD Value:</span>
+                        <span id="usdValue" class="value large"></span>
+                    </div>
+                    <div class="balance-item">
+                        <span class="label">Total Transactions:</span>
+                        <span id="txCount" class="value"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="transactions-section">
+                <h2>📝 Recent Transactions (Last 10)</h2>
+                <div id="transactionsList" class="transactions-list"></div>
+            </div>
+        </div>
+
+        <div id="emptyState" class="empty-state">
+            <p>👆 Enter a wallet address to get started</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
