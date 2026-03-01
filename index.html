@@ -9,16 +9,28 @@
 <body>
     <div class="container">
         <header>
-            <h1>🔍 Crypto Wallet Checker</h1>
-            <p class="subtitle">Check Ethereum wallet balance and recent transactions</p>
+            <div class="header-top">
+                <h1>🔍 Crypto Wallet Checker</h1>
+                <button id="themeToggle" class="theme-toggle" title="Toggle dark mode">🌙</button>
+            </div>
+            <p class="subtitle">Check wallet balance and recent transactions across multiple networks</p>
         </header>
 
         <div class="input-section">
+            <div class="network-selector">
+                <label for="networkSelect">Network:</label>
+                <select id="networkSelect" class="network-select">
+                    <option value="ethereum">Ethereum</option>
+                    <option value="polygon">Polygon (Matic)</option>
+                    <option value="bsc">Binance Smart Chain</option>
+                </select>
+            </div>
+
             <div class="input-group">
                 <input 
                     type="text" 
                     id="walletAddress" 
-                    placeholder="Paste your Ethereum wallet address (0x...)" 
+                    placeholder="Paste wallet address (0x...)" 
                     class="wallet-input"
                 >
                 <button id="checkBtn" class="check-button">Check Wallet</button>
@@ -40,8 +52,8 @@
                         <span id="displayAddress" class="value"></span>
                     </div>
                     <div class="balance-item">
-                        <span class="label">ETH Balance:</span>
-                        <span id="ethBalance" class="value large"></span>
+                        <span class="label">Balance:</span>
+                        <span id="cryptoBalance" class="value large"></span>
                     </div>
                     <div class="balance-item">
                         <span class="label">USD Value:</span>
@@ -55,7 +67,25 @@
             </div>
 
             <div class="transactions-section">
-                <h2>📝 Recent Transactions (Last 10)</h2>
+                <div class="transactions-header">
+                    <h2>📝 Recent Transactions</h2>
+                    <button id="exportBtn" class="export-button">📥 Export to CSV</button>
+                </div>
+
+                <div class="filter-section">
+                    <div class="date-filter">
+                        <label for="startDate">From:</label>
+                        <input type="date" id="startDate" class="date-input">
+                    </div>
+                    <div class="date-filter">
+                        <label for="endDate">To:</label>
+                        <input type="date" id="endDate" class="date-input">
+                    </div>
+                    <button id="filterBtn" class="filter-button">Filter</button>
+                    <button id="resetBtn" class="reset-button">Reset</button>
+                </div>
+
+                <div id="filteredCount" class="filtered-count"></div>
                 <div id="transactionsList" class="transactions-list"></div>
             </div>
         </div>
